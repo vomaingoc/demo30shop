@@ -40,7 +40,7 @@ export const products = [
     imagesFiletype: "jpg",
     imageName: "img",
     amount: 36,
-    imageInitialIndex: 10,
+    imageInitialIndex: 1,
     width: 399,
     height: 224,
     type: "3D",
