@@ -1,8 +1,14 @@
 import { Button, Col, Row, Image, Badge } from "antd";
-import { ShoppingOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  ShoppingOutlined,
+  UserOutlined,
+  EnvironmentOutlined,
+} from "@ant-design/icons";
 import { useState } from "react";
+import { gsap } from "gsap";
+import { useLayoutEffect, useRef } from "react";
 export default function Footer(props: any) {
-  const { onMenuClick } = props;
+  const { onMenuClick, loading } = props;
   const [showCart, setShowCart] = useState(false);
   const handleClickShowCart = () => {
     setShowCart((prev) => !prev);
@@ -10,6 +16,25 @@ export default function Footer(props: any) {
   const handleClick = (e: string) => {
     onMenuClick(e);
   };
+  const myRef = useRef(null);
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      if (loading) {
+        gsap.from(".row1", {
+          bottom: -300,
+          opacity: 0.6,
+          duration: 3,
+        });
+      } else {
+        gsap.to(".row1", {
+          opacity: 0,
+          duration: 1,
+        });
+      }
+    }, myRef);
+
+    return () => ctx.revert();
+  }, [loading]);
   return (
     <div className="footer">
       <Row className="row1">
@@ -18,14 +43,14 @@ export default function Footer(props: any) {
             <Col>
               <div className="logo">
                 <Image
-                  src="https://i.ibb.co/w672CFX/Logo-Meta-Mall-01.png"
+                  src="/files/logo.png"
                   alt=""
                   preview={false}
                   width={150}
                 />
               </div>
             </Col>
-            <Col>
+            {/* <Col>
               <Button type="link" className="btn-nav">
                 Home
               </Button>
@@ -39,12 +64,27 @@ export default function Footer(props: any) {
               >
                 Map
               </Button>
-            </Col>
+            </Col> */}
           </Row>
         </Col>
         <Col>
           <div className="tool-right">
-            <Row>
+            <Row gutter={24}>
+              <Col>
+                <Button
+                  style={{
+                    border: 0,
+                    fontSize: "1.5em",
+                    padding: 0,
+                    position: "relative",
+                  }}
+                  size="large"
+                  ghost
+                  onClick={() => handleClick("MAP")}
+                >
+                  <EnvironmentOutlined />
+                </Button>
+              </Col>
               <Col>
                 <Badge count={1} size="small" status="default" offset={[0, 0]}>
                   <Button

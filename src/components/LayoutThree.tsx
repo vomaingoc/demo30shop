@@ -44,7 +44,7 @@ function LayoutThree({ children }: { children: any }) {
           autoRotateSpeed={0.1}
         />
       </Canvas>
-      <Loader />
+      {/* <Loader /> */}
     </>
   );
 }
