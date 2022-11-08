@@ -12,7 +12,7 @@ import LayoutThree from "./components/LayoutThree";
 import Hotspot from "./components/Hotspot";
 const SceneItem = lazy(() => import("./components/Scene"));
 // import Sound from "./Sound";
-import Slide360View from "./components/Slide360View";
+const Slide360View = lazy(() => import("components/Slide360View"));
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import ListProduct from "./components/Product";
 import { Button, Col, Modal, Row, InputNumber, Tag, Image } from "antd";
@@ -22,7 +22,8 @@ import { gsap } from "gsap";
 import { products, hotspot, videos } from "data";
 import { ModelProcduct, ModelVideo } from "models";
 import ListVideo from "components/Videos";
-import Banner from "components/Banner";
+const Banner = lazy(() => import("components/Banner"));
+import VideoThree from "components/VideoThree";
 interface ModelScene {
   id: number;
   url: string;
@@ -33,7 +34,7 @@ export default function App() {
   const [listSceneOfRoom] = useState<Array<ModelScene>>([
     { id: 1, url: "https://i.ibb.co/GVcDGWC/sanh.jpg", radius: 500 },
     { id: 2, url: "https://i.ibb.co/JCvvdn9/rolex.jpg", radius: 500 },
-    { id: 3, url: "https://i.ibb.co/pbCsmy8/bg2.jpg", radius: 500 },
+    { id: 3, url: "/files/store.jpg", radius: 500 },
   ]);
   const [mysceneIndex, setMysceneIndex] = useState(0);
   const [listHotspotOfRoom] = useState(hotspot);
@@ -62,6 +63,7 @@ export default function App() {
     setProduct(obj);
   };
   const handleHotspotClick = (linkToSceneId: number) => {
+    callLoading();
     const index = listSceneOfRoom.findIndex((x) => x.id === linkToSceneId);
     setMysceneIndex(index);
   };
@@ -130,7 +132,6 @@ export default function App() {
   }, [isModalOpenMap, loading]);
 
   const handleMenuClick = (e: string) => {
-    console.log(e);
     if (e === "MAP") {
       setIsModalOpenMap(true);
     }
@@ -142,7 +143,7 @@ export default function App() {
   const handleCancelModalVideo = () => {
     setIsModalOpenVideo(false);
   };
-  const [pointName, setPointName] = useState(" ");
+  const [pointName, setPointName] = useState("_");
   const handleClickPointMap = (sceneId: number) => {
     callLoading();
     const index = listSceneOfRoom.findIndex((x) => x.id === sceneId);
@@ -159,22 +160,6 @@ export default function App() {
     setIsModalOpen2D(false);
   };
 
-  // const boxRefBanner = useRef(null);
-  // useLayoutEffect(() => {
-  //   let ctx = gsap.context(() => {
-  //     if (!loading) {
-  //       gsap.from(".images", {
-  //         opacity: 0,
-  //       });
-  //     } else {
-  //       gsap.to(".images", {
-  //         opacity: 0,
-  //       });
-  //     }
-  //   }, boxRefBanner);
-
-  //   return () => ctx.revert();
-  // }, [loading]);
   function callLoading() {
     setLoading(true);
     setTimeout(() => {
@@ -187,6 +172,7 @@ export default function App() {
   };
   return (
     <>
+      {/* <VideoThree /> */}
       <Suspense fallback={null}>
         {!started && !loading && (
           <Banner onStart={handleStart} loading={!loading} />
@@ -615,6 +601,7 @@ export default function App() {
               onCancel={handleCancelModalVideo}
               wrapClassName="ant-modal-video"
               focusTriggerAfterClose={false}
+              destroyOnClose
             >
               <div className="container-video">
                 <div className="video">
@@ -622,12 +609,12 @@ export default function App() {
                     <iframe
                       width="800"
                       height="450"
-                      src="https://www.youtube.com/embed/_jd4Qa9ZNLs"
+                      src="https://www.youtube.com/embed/_jd4Qa9ZNLs?autoplay=1&mute=0"
                       title="YouTube video player"
                       frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allow="accelerometer; autoplay; clipboard-write; muted; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                    ></iframe>
+                    />
                   )}
                 </div>
 

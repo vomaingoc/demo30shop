@@ -19,7 +19,7 @@ export const products = [
     id: 2,
     name: "Product 2",
     position: [-410.4195897562307, -213.12611287935994, 187.29184892475138],
-    sceneId: 3,
+    sceneId: 0,
     imagePath: "https://fastly-production.24c.in/webin/360/output_1.jpeg",
     url: "https://fastly-production.24c.in/webin/360/",
     imagesFiletype: "jpeg",
@@ -33,7 +33,7 @@ export const products = [
   {
     id: 3,
     name: "Sneaker 1",
-    position: [368.9079933034682, -32.58068759821467, 334.2316865822584],
+    position: [323.74654354337207, -30.367013341484665, 378.5577585578632],
     sceneId: 3,
     imagePath: "",
     url: "/files/shose2",

@@ -39,9 +39,19 @@ export default function Banner(props: any) {
             style={{ marginBottom: 24 }}
           />
         </div> */}
-        <video autoPlay loop muted id="video" className="video" controls>
+        <iframe
+          width="800"
+          height="450"
+          src="https://www.youtube.com/embed/_jd4Qa9ZNLs?autoplay=1&mute=1"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; muted; encrypted-media; gyroscope; picture-in-picture;loop;"
+          allowFullScreen
+          id="videobanner"
+        />
+        {/* <video autoPlay loop muted id="video" className="video" controls>
           <source src={"/files/videos/video.mp4"} type="video/mp4" />
-        </video>
+        </video> */}
         <div className="overlay">
           <h2 className="purple s1">Welcome to</h2>
           <h1 className="purple h1">VLINKMETA MALL</h1>

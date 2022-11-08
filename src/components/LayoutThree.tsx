@@ -1,6 +1,6 @@
 import React, { Suspense, useState, useRef, useEffect } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { OrbitControls, Preload, Loader } from "@react-three/drei";
+import { OrbitControls, Preload, Loader, Html } from "@react-three/drei";
 import Loading from "./Loading";
 function LayoutThree({ children }: { children: any }) {
   const ref = React.createRef<HTMLCanvasElement>();
@@ -30,9 +30,15 @@ function LayoutThree({ children }: { children: any }) {
         gl={{ preserveDrawingBuffer: true }}
       >
         <ambientLight />
-        <pointLight position={[10, 200, 10]} />
+        <pointLight position={[10, 200, 15]} />
 
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <Html center>
+              <Loading />
+            </Html>
+          }
+        >
           <Preload all />
           {children}
         </Suspense>

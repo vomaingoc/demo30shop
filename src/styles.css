@@ -515,6 +515,7 @@ polygon.st0::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  pointer-events: none;
 }
 
 #video {
@@ -529,7 +530,7 @@ polygon.st0::after {
 }
 .neon-button {
   font-size: 4rem;
-
+  pointer-events: auto;
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
@@ -576,6 +577,7 @@ polygon.st0::after {
   color: var(--clr-bg);
   text-shadow: none;
   color: #fff;
+  background-color: var(--clr-neon);
 }
 
 .neon-button:hover::before,
@@ -729,4 +731,14 @@ h1.purple {
   73% {
     text-shadow: none;
   }
+}
+
+#videobanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
