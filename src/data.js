@@ -140,7 +140,7 @@ export const hotspot = [
 export const videos = [
   {
     id: 1,
-    url: "/files/videos/video.mp4",
+    url: "https://www.youtube.com/watch?v=_jd4Qa9ZNLs",
     position: [-480.24355537512946, -125.12861426650723, -53.53573755614833],
     sceneId: 1,
     name: "TVC Vlinkmart",
@@ -148,7 +148,7 @@ export const videos = [
 
   {
     id: 2,
-    url: "/files/videos/video.mp4",
+    url: "https://www.youtube.com/watch?v=_jd4Qa9ZNLs",
     position: [-343.56577758926807, -16.590893388355482, -361.5069484914625],
     sceneId: 3,
     name: "TVC Vlinkmart",

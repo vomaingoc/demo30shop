@@ -213,7 +213,7 @@ body,
   justify-content: flex-end;
 }
 
-iframe {
+body > iframe {
   display: none;
 }
 .item-product {

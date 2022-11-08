@@ -117,15 +117,13 @@ export default function App() {
   const boxRefMap = useRef(null);
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      if (loading) {
-        gsap.from(".box", {
-          y: -250,
-          rotationY: 50,
-          rotationX: 20,
-          duration: 1.5,
-          opacity: 0,
-        });
-      }
+      gsap.from(".box", {
+        y: -250,
+        rotationY: 50,
+        rotationX: 20,
+        duration: 1.5,
+        opacity: 0,
+      });
     }, boxRefMap);
 
     return () => ctx.revert();
@@ -621,17 +619,15 @@ export default function App() {
               <div className="container-video">
                 <div className="video">
                   {video && (
-                    <video
+                    <iframe
                       width="800"
                       height="450"
-                      autoPlay
-                      muted
-                      style={{ maxWidth: "100%" }}
-                      controls
-                    >
-                      <source src={video?.url} type="video/mp4" />
-                      <source src={video?.url} type="video/ogg" />
-                    </video>
+                      src="https://www.youtube.com/embed/_jd4Qa9ZNLs"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
                   )}
                 </div>
 

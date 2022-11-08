@@ -14,7 +14,6 @@ export default function Banner(props: any) {
           opacity: 0.6,
           duration: 1,
         });
-
         gsap.from(".video", {
           opacity: 0.6,
         });
@@ -40,21 +39,12 @@ export default function Banner(props: any) {
             style={{ marginBottom: 24 }}
           />
         </div> */}
-        <video autoPlay loop muted id="video" className="video">
+        <video autoPlay loop muted id="video" className="video" controls>
           <source src={"/files/videos/video.mp4"} type="video/mp4" />
         </video>
         <div className="overlay">
           <h2 className="purple s1">Welcome to</h2>
-          {/* <Image
-            src="/files/logo.png"
-            alt=""
-            preview={false}
-            width={450}
-            style={{ marginBottom: 24 }}
-          /> */}
-
           <h1 className="purple h1">VLINKMETA MALL</h1>
-
           <a href="#" onClick={onStart} className="neon-button">
             Start now
           </a>

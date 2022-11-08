@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useRef } from "react";
+import React, { Suspense, useState, useRef, useEffect } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, Loader } from "@react-three/drei";
 import Loading from "./Loading";
@@ -44,7 +44,7 @@ function LayoutThree({ children }: { children: any }) {
           autoRotateSpeed={0.1}
         />
       </Canvas>
-      {/* <Loader /> */}
+      <Loader />
     </>
   );
 }
